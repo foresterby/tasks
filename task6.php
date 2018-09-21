@@ -21,8 +21,14 @@ if (isset($_POST['user_input']) && is_numeric($_POST['user_input']))
 	$x = $_POST['user_input'];
 	$x = (int)$x;
 	
+		
+	
+	
 	
 	switch ($x) {
+		case ($x > 60):
+			echo 'Введите корректное значение';
+			break;
 		case ($x > 0 && $x <= 3):
 			echo 'Горит зелёный сигнал светофора';
 			break;
@@ -44,20 +50,12 @@ if (isset($_POST['user_input']) && is_numeric($_POST['user_input']))
 		case ($x > 5 && ($x % 5 == 0)):
 			echo 'Горит красный';
 			break;
-		case ($x > 60):
-			echo 'В часе 60 минут, введите корректное значение';
-			break;
-			
-			
+		
+				
 	}
-	
-	
+		
 	}	
 	
-	
 ?>
-
-
-
 </body>
 </html>	
