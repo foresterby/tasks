@@ -23,18 +23,13 @@ if (isset($_POST['user_input']) && isset($_POST['wanted_number']) && is_numeric(
 	$number = $_POST['user_input'];
 	$wanted = $_POST['wanted_number'];
 	$arr = str_split($number);
-	$arr_result = [];
+	$result = 0;
 	
-	foreach ($arr as $i) {
-		if ($i == $wanted)
-			$arr_result[] = $i;
-    }
-	$result = count($arr_result);
+	foreach ($arr as $i) 
+		if ($i == $wanted) $result++;
+    
    	echo '<br><br>Количество вхождений цифры '."$wanted".' в данной последовательности равна: '."$result";
 } 
 ?>	
-
 </body>
-</html>	
-	
-	
+</html> 
