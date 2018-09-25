@@ -1,61 +1,46 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-<form method="post">
-    Введите количество минут, прошедших с начала часа:
-	<br>
-	<br>
-    <input type="text" name="user_input"><br><br>
-	<br>
-	<input type="submit" name="submit" value="Отправить">
-</form>
-<br>
 <?php
+$random_arr = [];
+for ($i = 1; $i <= 10; $i++)
+	$random_arr[] = rand(50, 100);
 
-if (isset($_POST['user_input']) && is_numeric($_POST['user_input']))
+
+
+echo '<br>'.'Начальный массив:'.'<br>';
+print_r($random_arr);
+
+		
+$max_value = $random_arr[0];
+$min_value = $random_arr[0];
+
+
+for($i = 0; $i < count($random_arr); $i++) 
 	{
 	
-	$x = $_POST['user_input'];
-	$x = (int)$x;
+	if($random_arr[$i] > $max_value)
+		{
+		$max_value = $random_arr[$i];
+		$key_max = $i;
+		}
 	
-		
 	
-	
-	
-	switch ($x) {
-		case ($x > 60):
-			echo 'Введите корректное значение';
-			break;
-		case ($x > 0 && $x <= 3):
-			echo 'Горит зелёный сигнал светофора';
-			break;
-		case ($x > 3 && $x <= 5):
-			echo 'Горит красный';
-			break;
-		case ($x > 5 && ($x % 5 == 3)):
-			echo 'Горит зелёный сигнал светофора';
-			break;
-		case ($x > 5 && ($x % 5 == 2)):
-			echo 'Горит зелёный сигнал светофора';
-			break;
-		case ($x > 5 && ($x % 5 == 1)):
-			echo 'Горит зелёный сигнал светофора';
-			break;
-		case ($x > 5 && ($x % 5 == 4)):
-			echo 'Горит красный';
-			break;
-		case ($x > 5 && ($x % 5 == 0)):
-			echo 'Горит красный';
-			break;
-		
-				
+	if($random_arr[$i] < $min_value)
+		{
+		$min_value = $random_arr[$i];
+		$key_min = $i;
+		}		
 	}
-		
-	}	
 	
+
+//echo '<br>'."$key_max";
+//echo '<br>'."$key_min";
+
+	
+$random_arr[(int)$key_max] = "$min_value";
+$random_arr[(int)$key_min] = "$max_value";
+	
+echo '<br>';
+echo '<br>'.'Массив после преобразования:'.'<br>';
+print_r($random_arr);
+
+
 ?>
-</body>
-</html>	
